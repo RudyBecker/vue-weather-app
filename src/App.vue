@@ -26,7 +26,6 @@
               style="width:200px;height:200px;"
             />
             <h1 style="font-size:5em">{{ weather.temperature }}&deg;F</h1>
-            <!-- <h1 class="mx-auto">{{ weather.cityName }}</h1> -->
           </div>
           <div class="flip-card-back">
             <h5 class="py-1">
@@ -74,9 +73,7 @@ export default {
     },
     image_url: "",
   }),
-  // mounted() {
-  //   this.image_url = "http://openweathermap.org/img/wn/";
-  // },
+
   methods: {
     //fetch and assign weather data
     getWeather: async function() {
@@ -120,20 +117,9 @@ export default {
       }
     },
   },
-  // computed: {
-  //   iconImage: {
-  //     get: function() {
-  //       return this.iconLink;
-  //     },
-  //     set: function() {
-  //       this.iconLink = `http://openweathermap.org/img/wn/${this.weather.icon}@2x.png`;
-  //     },
-  //   },
-  // },
+
   computed: {
     imageUrl() {
-      // const image ="http://openweathermap.org/img/wn/" + this.weather.icon + "@2x.png";
-      // const weatherIcon = "10d";
       const image = `http://openweathermap.org/img/wn/${this.weather.icon}@2x.png`;
 
       return image;
