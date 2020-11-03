@@ -1,35 +1,50 @@
 <template>
   <div id="main" :class="isDay ? 'day' : 'night'">
     <div>
-      <h1 class="main title text-center">Weather in</h1>
+      <h1 class="main title text-center mt-5">
+        Weather in {{ weather.cityName }}
+      </h1>
       <form v-on:submit.prevent="getWeather">
         <b-form-input
           type="text"
-          class="text-muted my-5 shadow-sm w-25 mx-auto"
+          class="text-muted font-weight-bold my-5 shadow-sm w-25 mx-auto"
           placeholder="Enter city name to view weather"
           v-model="citySearch"
           autocomplete="off"
         />
       </form>
-      <p class="text-center my-3" v-if="cityFound">No city found</p>
+      <h5 class="text-center my-3" v-if="cityFound">
+        No city found, please enter city name.
+      </h5>
 
-      <div class="flip-card mx-auto" style="background:red" v-if="visible">
+      <div class="flip-card mx-auto" v-if="visible">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <p>{{ weather.cityName }}</p>
             <img
-              :src="image_url + weather.icon"
+              :src="imageUrl"
               alt="Avatar"
-              style="width:300px;height:300px;"
+              style="width:200px;height:200px;"
             />
+            <h1 style="font-size:5em">{{ weather.temperature }}&deg;F</h1>
+            <!-- <h1 class="mx-auto">{{ weather.cityName }}</h1> -->
           </div>
           <div class="flip-card-back">
-            <p>{{ weather.cityName }}</p>
-            <span>{{ weather.temperature }}&deg;F</span>
-            <p>{{ weather.lowTemp }}&deg;F</p>
-            <p>{{ weather.highTemp }}&deg;F</p>
-            <p>{{ weather.feelsLike }}&deg;F</p>
-            <p>{{ weather.humidity }}%</p>
+            <h5 class="py-1">
+              The current temperature in {{ weather.cityName }} is
+              {{ weather.temperature }} &deg;F
+            </h5>
+            <h5 class="py-1">
+              You will find {{ weather.description }} currently in
+              {{ weather.cityName }}.
+            </h5>
+            <h5 class="py-1">
+              Today's low temperature will be {{ weather.lowTemp }}&deg;F, with
+              a high of {{ weather.highTemp }}&deg;F
+            </h5>
+            <h5 class="py-1">Enjoy your time in {{ weather.cityName }}!</h5>
+            <h6 class="text-center font-weight-lighter font-italic">
+              Built by Rudy Becker using Vue with data from OpenWeatherMap.org
+            </h6>
           </div>
         </div>
       </div>
@@ -62,13 +77,14 @@ export default {
     },
     image_url: "",
   }),
-  mounted() {
-    this.image_url = "http://openweathermap.org/img/wn/";
-  },
+  // mounted() {
+  //   this.image_url = "http://openweathermap.org/img/wn/";
+  // },
   methods: {
     //fetch and assign weather data
     getWeather: async function() {
       console.log(this.citySearch);
+      console.log(this.weather.icon);
       const key = "bb047a2b68262787a19ee0c198ae9661";
       const baseURL = `http://api.openweathermap.org/data/2.5/weather?q=${this.citySearch}&appid=${key}&units=imperial`;
 
@@ -100,6 +116,7 @@ export default {
         }
 
         this.visible = true;
+        this.cityFound = false;
       } catch (error) {
         this.cityFound = true;
         this.visible = false;
@@ -116,6 +133,15 @@ export default {
   //     },
   //   },
   // },
+  computed: {
+    imageUrl() {
+      // const image ="http://openweathermap.org/img/wn/" + this.weather.icon + "@2x.png";
+      // const weatherIcon = "10d";
+      const image = `http://openweathermap.org/img/wn/${this.weather.icon}@2x.png`;
+
+      return image;
+    },
+  },
 };
 </script>
 
@@ -144,18 +170,16 @@ export default {
 .title {
   font-size: 50px;
   font-weight: 500;
+  font-family: "Arial Black", Gadget, sans-serif;
 }
 
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
   background-color: transparent;
-  width: 300px;
-  height: 200px;
-  border: 1px solid #f1f1f1;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  width: 500px;
+  height: 400px;
+  perspective: 1000px;
 }
 
-/* This container is needed to position the front and back side */
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -165,12 +189,10 @@ export default {
   transform-style: preserve-3d;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-/* Position the front and back side */
 .flip-card-front,
 .flip-card-back {
   position: absolute;
@@ -180,15 +202,14 @@ export default {
   backface-visibility: hidden;
 }
 
-/* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #bbb;
+  background-color: transparent;
   color: black;
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
+  background-color: transparent;
   color: white;
   transform: rotateY(180deg);
 }
