@@ -7,7 +7,7 @@
       <form v-on:submit.prevent="getWeather">
         <b-form-input
           type="text"
-          class="text-muted font-weight-bold my-5 shadow-sm w-25 mx-auto"
+          class="text-muted font-weight-bold my-5 shadow-sm w-25 mx-auto rounded-pill"
           placeholder="Enter city name to view weather"
           v-model="citySearch"
           autocomplete="off"
@@ -41,7 +41,9 @@
               Today's low temperature will be {{ weather.lowTemp }}&deg;F, with
               a high of {{ weather.highTemp }}&deg;F
             </h5>
-            <h5 class="py-1">Enjoy your time in {{ weather.cityName }}!</h5>
+            <h5 class="py-1">
+              Enjoy your time in {{ weather.cityName }}, {{ weather.country }}!
+            </h5>
             <h6 class="text-center font-weight-lighter font-italic">
               Built by Rudy Becker using Vue with data from OpenWeatherMap.org
             </h6>
@@ -57,11 +59,6 @@ export default {
   data: () => ({
     cityFound: false,
     visible: false,
-    stormy: false,
-    cloudy: false,
-    clearSky: false,
-    clearNight: false,
-    snowy: false,
     isDay: true,
     citySearch: "",
     weather: {
