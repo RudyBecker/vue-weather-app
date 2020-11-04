@@ -1,6 +1,7 @@
 # vue-weather-app
 Completed for Stirling Brandworks
-Live Demo : https://rudy-stirling-weather.netlify.app/
+
+Live Demo Available: https://rudy-stirling-weather.netlify.app/
 
 ## Key Features
 This weather app provides weather data from OpenWeatherMap.org 
@@ -27,10 +28,6 @@ yarn build
 ```
 yarn lint
 ```
-
-**Run Jest Unit tests**
-
-    yarn test:unit
 
 ## System Dependencies
 Vue 2.6.11
