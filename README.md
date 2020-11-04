@@ -44,7 +44,7 @@ Please make sure to update tests as appropriate.
 ## Additional Features
 
  Version 2.0 will contain:
- - options to display more weather information (humidity, air pressure, wind speed, etc.)
+ - Options to display more weather information (humidity, air pressure, wind speed, etc.)
  - "Get lucky" feature where users can see the weather of a random city around the world
  - Option to toggle between Celsius and Fahrenheit
 
