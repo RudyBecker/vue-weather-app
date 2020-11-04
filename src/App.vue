@@ -80,7 +80,7 @@ export default {
       console.log(this.citySearch);
       console.log(this.weather.icon);
       const key = "bb047a2b68262787a19ee0c198ae9661";
-      const baseURL = `http://api.openweathermap.org/data/2.5/weather?q=${this.citySearch}&appid=${key}&units=imperial`;
+      const baseURL = `https://api.openweathermap.org/data/2.5/weather?q=${this.citySearch}&appid=${key}&units=imperial`;
 
       try {
         const response = await fetch(baseURL);
@@ -120,7 +120,7 @@ export default {
 
   computed: {
     imageUrl() {
-      const image = `http://openweathermap.org/img/wn/${this.weather.icon}@2x.png`;
+      const image = `https://openweathermap.org/img/wn/${this.weather.icon}@2x.png`;
 
       return image;
     },
