@@ -75,7 +75,6 @@ export default {
   }),
 
   methods: {
-    //fetch and assign weather data
     getWeather: async function() {
       console.log(this.citySearch);
       console.log(this.weather.icon);
@@ -97,12 +96,9 @@ export default {
         this.weather.humidity = Math.round(data.main.humidity);
 
         this.weather.icon = data.weather[0].icon;
-        console.log(this.weather.icon);
-        // this.weather.iconLink = `http://openweathermap.org/img/wn/${this.weather.icon}@2x.png`;
 
         const timeOfDay = data.weather[0].icon;
 
-        //check for time of day
         if (timeOfDay.includes("n")) {
           this.isDay = false;
         } else {
@@ -181,7 +177,7 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
@@ -190,7 +186,6 @@ export default {
   color: black;
 }
 
-/* Style the back side */
 .flip-card-back {
   background-color: transparent;
   color: white;
