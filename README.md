@@ -1,5 +1,5 @@
 # vue-weather-app
-Completed for Stirling Brandworks
+
 
 Live Demo Available: https://rudy-stirling-weather.netlify.app/
 
