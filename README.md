@@ -1,7 +1,7 @@
 # vue-weather-app
 
 
-Live Demo Available: https://rudy-stirling-weather.netlify.app/
+Live Demo Available: https://rudy-b-weather.netlify.app/
 
 ## Key Features
 This weather app provides weather data from OpenWeatherMap.org 
