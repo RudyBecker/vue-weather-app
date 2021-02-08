@@ -1,4 +1,4 @@
-# vue-weather-app
+# Weather Box 2020
 
 
 Live Demo Available: https://rudy-b-weather.netlify.app/
